@@ -1,0 +1,15 @@
+\chapter{Avance y resultados esperados}
+\section{Avance documental}
+El avance de esta etapa consiste en una propuesta reformulada a partir de 43 fichas bibliográficas, una síntesis que reconoce antecedentes cercanos y un protocolo que separa predicción, explicación y evaluación de calidad. Las doce incorporaciones con revisión en texto completo documentada en el vault permiten precisar varias afirmaciones del planteamiento inicial.
+
+La principal modificación es la delimitación del aporte. La selección guiada por explicabilidad y los sistemas integrados ya tienen antecedentes. La propuesta se concentra en medir el efecto de combinar selección, destilación y adaptación frente a alternativas competitivas. También se corrige la caracterización de los artículos de Ullah, se distingue atención de explicación validada y se evita atribuir al explicador tiempos que corresponden a entrenamiento o inferencia.
+
+\section{Resultados que deberá producir la evaluación}
+La fase experimental deberá producir, para cada dataset y configuración, una tabla de rendimiento predictivo, una de costo por fase y una de calidad explicativa. Se acompañarán de la distribución de rutas adaptativas y de resultados para errores de alta confianza. Las ablaciones permitirán observar si la ganancia procede de seleccionar atributos, cambiar el entrenamiento del estudiante o reducir el presupuesto de explicación.
+
+También se elaborará una curva de costo frente a calidad, variando el presupuesto de consultas y los umbrales de la política. Interesa identificar configuraciones que ahorren recursos manteniendo las restricciones, así como aquellas que aparentemente ahorran por deteriorar las explicaciones. Las tablas se completarán con mediciones reales; este avance no incluye porcentajes de mejora estimados como si fueran resultados.
+
+\section{Posibles conclusiones del experimento}
+La evaluación puede mostrar una mejora de la arquitectura completa, una ventaja de solo algunos componentes o ausencia de beneficio frente a una línea base eficiente. Cualquiera de estos escenarios responderá parte de la pregunta si el protocolo permite interpretarlo. Un resultado negativo de destilación o adaptación evitaría añadir complejidad innecesaria y ayudaría a delimitar cuándo conviene usar esas técnicas.
+
+La interpretación considerará los intervalos de confianza, los márgenes predefinidos y los límites de cada dataset. No se extrapolará una mejora observada en un conjunto público a todos los tipos de malware ni a un SOC en operación.

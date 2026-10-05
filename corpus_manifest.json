@@ -1,0 +1,389 @@
+[
+  {
+    "id": "F01",
+    "ficha": "Papers/ACM Computing Survey (3677374).md",
+    "linea": "Revisión",
+    "uso": "Marco de técnicas; ficha breve que requiere completar metadatos.",
+    "respaldo": "Ficha previa; contraste pendiente",
+    "identificador": "10.1145/3677374",
+    "citekey": null
+  },
+  {
+    "id": "F02",
+    "ficha": "Papers/AFA-MalGAN - Generación Adversarial Adaptativa con Optimización de Variedades.md",
+    "linea": "Robustez",
+    "uso": "Contexto de evasión; no se trasladan tasas de ataque sin verificar el original.",
+    "respaldo": "Ficha previa; contraste pendiente",
+    "identificador": "10.1016/j.jksuci.2024.102194",
+    "citekey": null
+  },
+  {
+    "id": "F03",
+    "ficha": "Papers/Análisis de Comunidades de Malware con Características Multimodales.md",
+    "linea": "Multimodal",
+    "uso": "Representaciones y agrupación; no mide por sí mismo costo de explicación.",
+    "respaldo": "Ficha previa; contraste pendiente",
+    "identificador": "10.1109/ACCESS.2020.2989606",
+    "citekey": null
+  },
+  {
+    "id": "F04",
+    "ficha": "Papers/Attention-Based Cross-Modal CNN - Detección de Malware sin Desensamblado.md",
+    "linea": "Multimodal",
+    "uso": "Contraste de fusión y atención; no se asume fidelidad explicativa.",
+    "respaldo": "Ficha previa; contraste pendiente",
+    "identificador": "10.1109/ACCESS.2023.3252989",
+    "citekey": null
+  },
+  {
+    "id": "F05",
+    "ficha": "Papers/C-GUARD - Enrutamiento Adaptativo frente a Malware Evasivo.md",
+    "linea": "Adaptación",
+    "uso": "Auditar errores de alta confianza; adapta detección, no explicación.",
+    "respaldo": "PDF local; revisión documentada",
+    "identificador": "10.3390/fi18080431",
+    "citekey": "Imran2026CGUARD"
+  },
+  {
+    "id": "F06",
+    "ficha": "Papers/CNN Basada en Atención para Clasificación Robusta de Malware - Ravi y Alazab.md",
+    "linea": "Visual",
+    "uso": "Atención como objeto de inspección, sin atribuirle costo nulo.",
+    "respaldo": "Ficha previa; contraste pendiente",
+    "identificador": "10.1111/coin.12551",
+    "citekey": null
+  },
+  {
+    "id": "F07",
+    "ficha": "Papers/CNN-DMA - Modelo Ligero para Detección de Malware en IoT-5G.md",
+    "linea": "Recursos",
+    "uso": "Contexto IoT; cifras específicas pendientes de contraste.",
+    "respaldo": "Ficha previa; contraste pendiente",
+    "identificador": "10.3390/s21196346",
+    "citekey": null
+  },
+  {
+    "id": "F08",
+    "ficha": "Papers/Comparación ML y DL sobre Llamadas API - Cannarile et al.md",
+    "linea": "Línea base",
+    "uso": "Justifica comparar árboles competitivos y separar tiempos predictivos de XAI.",
+    "respaldo": "PDF local; revisión documentada",
+    "identificador": "10.3390/app12031645",
+    "citekey": "Cannarile2022API"
+  },
+  {
+    "id": "F09",
+    "ficha": "Papers/CyberSentinel - Red Visual de Dos Ramas y Atención.md",
+    "linea": "Recursos",
+    "uso": "Reporta recursos del clasificador; no confundirlos con latencia XAI.",
+    "respaldo": "PDF local; revisión documentada",
+    "identificador": "10.3390/s24113406",
+    "citekey": "Basak2024CyberSentinel"
+  },
+  {
+    "id": "F10",
+    "ficha": "Papers/DIDroid - Clasificación de Malware Android con Deep Image Learning.md",
+    "linea": "Android",
+    "uso": "Contexto de representación visual, sin equiparar tareas entre datasets.",
+    "respaldo": "Ficha previa; contraste pendiente",
+    "identificador": "10.1145/3442520.3442522",
+    "citekey": null
+  },
+  {
+    "id": "F11",
+    "ficha": "Papers/DREBIN - Detección y Explicabilidad de Malware Android.md",
+    "linea": "Interpretable",
+    "uso": "Orienta la línea base interpretable; no se supone costo explicativo cero.",
+    "respaldo": "Ficha previa; contraste pendiente",
+    "identificador": "10.14722/ndss.2014.23247",
+    "citekey": null
+  },
+  {
+    "id": "F12",
+    "ficha": "Papers/De Caja Negra a Caja de Cristal - Revisión XAI - Liu et al.md",
+    "linea": "Marco XAI",
+    "uso": "Taxonomía y antecedentes conceptuales de adaptación.",
+    "respaldo": "PDF local; revisión documentada",
+    "identificador": "10.3390/ai6110285",
+    "citekey": "Liu2025GlassBox"
+  },
+  {
+    "id": "F13",
+    "ficha": "Papers/Detección Ligera de Malware Android con FCMSA y LightGBM.md",
+    "linea": "Selección",
+    "uso": "Orienta alternativas tabulares; métricas antiguas pendientes de contraste.",
+    "respaldo": "Ficha previa; contraste pendiente",
+    "identificador": "10.1016/j.eij.2024.100560",
+    "citekey": null
+  },
+  {
+    "id": "F14",
+    "ficha": "Papers/EfficientNet CNN para Clasificación de Malware Basada en Imágenes.md",
+    "linea": "Visual",
+    "uso": "Contexto de eficiencia arquitectónica; no prueba ahorro del explicador.",
+    "respaldo": "Ficha previa; contraste pendiente",
+    "identificador": "10.1016/j.jisa.2022.103306",
+    "citekey": null
+  },
+  {
+    "id": "F15",
+    "ficha": "Papers/Ensemble Deep Neural Network Multimodal para Malware.md",
+    "linea": "Multimodal",
+    "uso": "Contexto de ensambles; no se importa un costo XAI no medido.",
+    "respaldo": "Ficha previa; contraste pendiente",
+    "identificador": "10.1038/s41598-025-96203-3",
+    "citekey": null
+  },
+  {
+    "id": "F16",
+    "ficha": "Papers/Evaluación de Modelos CNN Preentrenados en Detección de Malware.md",
+    "linea": "Visual",
+    "uso": "Comparación de arquitecturas; distinguir operaciones de operaciones por segundo.",
+    "respaldo": "Ficha previa; contraste pendiente",
+    "identificador": "10.3390/app14062614",
+    "citekey": null
+  },
+  {
+    "id": "F17",
+    "ficha": "Papers/Evolución del Machine Learning en Detección de Malware - Gibert et al.md",
+    "linea": "Revisión",
+    "uso": "Panorama histórico de representaciones y detección.",
+    "respaldo": "Ficha previa; contraste pendiente",
+    "identificador": "10.1016/j.jnca.2019.102526",
+    "citekey": null
+  },
+  {
+    "id": "F18",
+    "ficha": "Papers/Explicabilidad en CNN - Revisión Sistemática - Tayari y Zaied.md",
+    "linea": "Calidad XAI",
+    "uso": "Fidelidad, estabilidad y límites de evaluación humana; alcance multidominio.",
+    "respaldo": "PDF local; revisión documentada",
+    "identificador": "10.3390/make8080220",
+    "citekey": "Tayari2026Clarity"
+  },
+  {
+    "id": "F19",
+    "ficha": "Papers/Fusión Multimodal ConvNeXt y Calibración - Alotaibi.md",
+    "linea": "Multimodal",
+    "uso": "ConvNeXt y atención; SHAP queda como trabajo futuro.",
+    "respaldo": "PDF local; revisión documentada",
+    "identificador": "10.3390/app152111635",
+    "citekey": "Alotaibi2025Multimodal"
+  },
+  {
+    "id": "F20",
+    "ficha": "Papers/Generación de Datasets de Seguridad 5G - Amponis et al.md",
+    "linea": "Contexto externo",
+    "uso": "Calidad de datasets de seguridad 5G; no es evidencia directa de XAI en malware.",
+    "respaldo": "Ficha previa; contraste pendiente",
+    "identificador": "10.1016/j.aeue.2023.154913",
+    "citekey": null
+  },
+  {
+    "id": "F21",
+    "ficha": "Papers/IMCMKCNN - CNN Ligera Multi-Escala para Malware.md",
+    "linea": "Visual",
+    "uso": "Arquitectura ligera como contexto; ahorro XAI no inferido automáticamente.",
+    "respaldo": "Ficha previa; contraste pendiente",
+    "identificador": "10.1016/j.aej.2024.12.010",
+    "citekey": null
+  },
+  {
+    "id": "F22",
+    "ficha": "Papers/IMCNN - Clasificación Inteligente de Malware con CNNs y Ensembles.md",
+    "linea": "Visual",
+    "uso": "Ensamble visual como antecedente temático, no baseline reproducido.",
+    "respaldo": "Ficha previa; contraste pendiente",
+    "identificador": "10.1016/j.comcom.2023.12.036",
+    "citekey": null
+  },
+  {
+    "id": "F23",
+    "ficha": "Papers/Ingeniería de Características Explicable sobre FCG - Kim et al.md",
+    "linea": "Selección",
+    "uso": "Antecedente directo de selección guiada por XAI en grafos.",
+    "respaldo": "PDF local; revisión documentada",
+    "identificador": "10.3390/app16062670",
+    "citekey": "Kim2026FCG"
+  },
+  {
+    "id": "F24",
+    "ficha": "Papers/Investigación Comprehensiva Detección de Malware con XAI.md",
+    "linea": "XAI en malware",
+    "uso": "Aplicación tabular de XAI; título y fecha requieren normalización bibliográfica.",
+    "respaldo": "Ficha previa; contraste pendiente",
+    "identificador": "10.1016/j.csa.2024.100072",
+    "citekey": null
+  },
+  {
+    "id": "F25",
+    "ficha": "Papers/MAL-XSEL Framework.md",
+    "linea": "XAI en malware",
+    "uso": "Antecedente de stacking con XAI; no se declara reproducción experimental.",
+    "respaldo": "Ficha previa; contraste pendiente",
+    "identificador": "10.3390/pr13051329",
+    "citekey": null
+  },
+  {
+    "id": "F26",
+    "ficha": "Papers/MC-KDFF - Clasificación de Malware con Destilación de Conocimiento y Fusión.md",
+    "linea": "Destilación",
+    "uso": "Motiva profesor--estudiante; cifras de ahorro de la ficha no se reutilizan.",
+    "respaldo": "Ficha previa; contraste pendiente",
+    "identificador": "10.1109/ACCESS.2025.3546702",
+    "citekey": null
+  },
+  {
+    "id": "F27",
+    "ficha": "Papers/MIDALF - Fusión Multimodal de Imagen y Audio para Malware.md",
+    "linea": "Multimodal",
+    "uso": "Contexto de fusión; no atribuirle latencia de explicación sin medición.",
+    "respaldo": "Ficha previa; contraste pendiente",
+    "identificador": "10.1186/s13635-025-00188-5",
+    "citekey": null
+  },
+  {
+    "id": "F28",
+    "ficha": "Papers/MIRACLE - Reconocimiento de Imágenes de Malware por Extracción en Capas.md",
+    "linea": "Visual",
+    "uso": "Representación estructurada; autoría y datos editoriales por completar.",
+    "respaldo": "Ficha previa; contraste pendiente",
+    "identificador": "10.1007/s10618-024-01078-z",
+    "citekey": null
+  },
+  {
+    "id": "F29",
+    "ficha": "Papers/Malware Android con BERT y Representación Visual - Ullah et al.md",
+    "linea": "XAI en Android",
+    "uso": "BERT, tráfico y votación; distingue aplicación de XAI de su costo.",
+    "respaldo": "PDF local; revisión documentada",
+    "identificador": "10.3390/s22186766",
+    "citekey": "Ullah2022BERT"
+  },
+  {
+    "id": "F30",
+    "ficha": "Papers/Malware Android con Word2vec y Tráfico de Red - Ullah et al.md",
+    "linea": "XAI en Android",
+    "uso": "Corrige la atribución a PE y stacking: tráfico Android y votación.",
+    "respaldo": "PDF local; revisión documentada",
+    "identificador": "10.3390/s22155883",
+    "citekey": "Ullah2022Word2vec"
+  },
+  {
+    "id": "F31",
+    "ficha": "Papers/Mitigación de Riesgos de Malware con Deep Learning.md",
+    "linea": "Clasificación",
+    "uso": "Antecedente temático de aprendizaje profundo; datos editoriales por completar.",
+    "respaldo": "Ficha previa; contraste pendiente",
+    "identificador": "10.3390/electronics12143166",
+    "citekey": null
+  },
+  {
+    "id": "F32",
+    "ficha": "Papers/Multi-Stream CNN para Clasificación de Familias de Malware Android.md",
+    "linea": "Android",
+    "uso": "Representaciones por flujos; revista y resultados requieren contraste.",
+    "respaldo": "Ficha previa; contraste pendiente",
+    "identificador": "10.1109/TII.2021.3139820",
+    "citekey": null
+  },
+  {
+    "id": "F33",
+    "ficha": "Papers/Pipeline Híbrido Explicable y Benchmark sin Fuga - Ardito et al.md",
+    "linea": "Integración",
+    "uso": "Antecedente cercano de reducción, fusión y auditoría sin fuga.",
+    "respaldo": "PDF local; revisión documentada",
+    "identificador": "10.3390/jcp6030105",
+    "citekey": "Ardito2026Hybrid"
+  },
+  {
+    "id": "F34",
+    "ficha": "Papers/RFS-MD - Reglas Explicables y Robustez Android.md",
+    "linea": "Reglas y calidad",
+    "uso": "Alternativa con reglas; su fidelidad es cambio de probabilidad, no tasa de acierto.",
+    "respaldo": "PDF local; revisión documentada",
+    "identificador": "10.3390/electronics15102167",
+    "citekey": "Alhawari2026RFSMD"
+  },
+  {
+    "id": "F35",
+    "ficha": "Papers/Revisión Sistemática de Detección de Malware - Vásquez Berríos et al.md",
+    "linea": "Revisión",
+    "uso": "Contexto metodológico; no transferir conteos PRISMA a la revisión propia.",
+    "respaldo": "Ficha previa; contraste pendiente",
+    "identificador": "10.3390/app15147747",
+    "citekey": null
+  },
+  {
+    "id": "F36",
+    "ficha": "Papers/Revisión Sistemática de Detección de Malware con IA - Gaber et al.md",
+    "linea": "Revisión",
+    "uso": "Panorama de detección con IA; completar contraste de metadatos.",
+    "respaldo": "Ficha previa; contraste pendiente",
+    "identificador": "10.1145/3638552",
+    "citekey": null
+  },
+  {
+    "id": "F37",
+    "ficha": "Papers/SACNN - Clasificación de Imágenes de Malware con VGG19 y Atención Espacial.md",
+    "linea": "Visual",
+    "uso": "Atención espacial como contexto, sin equipararla automáticamente a explicación fiel.",
+    "respaldo": "Ficha previa; contraste pendiente",
+    "identificador": "10.3390/electronics10192444",
+    "citekey": null
+  },
+  {
+    "id": "F38",
+    "ficha": "Papers/Segmentación de Escenas Basada en Transformers y Restricciones de Tiempo Real.md",
+    "linea": "Contexto externo",
+    "uso": "Analogía de recursos en visión; excluida de evidencia directa de malware.",
+    "respaldo": "Ficha previa; contraste pendiente",
+    "identificador": "10.3390/wevj15110516",
+    "citekey": null
+  },
+  {
+    "id": "F39",
+    "ficha": "Papers/Seguimiento Multi-Objetivo con Transformer y Auto-Atención.md",
+    "linea": "Contexto externo",
+    "uso": "Conceptos de atención; excluido de evidencia directa de malware.",
+    "respaldo": "Ficha previa; contraste pendiente",
+    "identificador": "10.3390/rs14246354",
+    "citekey": null
+  },
+  {
+    "id": "F40",
+    "ficha": "Papers/Transfer Learning para Detección de Malware Basada en Imágenes en IoT.md",
+    "linea": "Recursos",
+    "uso": "Contexto IoT; no demuestra ahorro XAI transferible.",
+    "respaldo": "Ficha previa; contraste pendiente",
+    "identificador": "10.3390/s23063253",
+    "citekey": null
+  },
+  {
+    "id": "F41",
+    "ficha": "Papers/XAI Ciberseguridad Diseño Humano y Edge - Cecchi et al.md",
+    "linea": "Utilidad humana",
+    "uso": "Distingue calidad técnica de utilidad con analistas.",
+    "respaldo": "PDF local; revisión documentada",
+    "identificador": "10.3390/jcp6030091",
+    "citekey": "Cecchi2026Connecting"
+  },
+  {
+    "id": "F42",
+    "ficha": "Papers/XAI en Detección de Malware - Thompson et al.md",
+    "linea": "Referencia incompleta",
+    "uso": "Sin DOI ni editorial identificables en la ficha; no sustenta conclusiones empíricas.",
+    "respaldo": "Ficha previa; contraste pendiente",
+    "identificador": "Por completar",
+    "citekey": null
+  },
+  {
+    "id": "F43",
+    "ficha": "Papers/XAI for Malware Analysis Survey.md",
+    "linea": "Revisión XAI",
+    "uso": "Síntesis de XAI en malware; metadatos contrastados con arXiv v3.",
+    "respaldo": "Metadatos web contrastados; síntesis del vault",
+    "identificador": "arXiv:2409.13723",
+    "citekey": null
+  }
+]

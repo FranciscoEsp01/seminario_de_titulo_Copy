@@ -1,0 +1,9 @@
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+A malware classifier may produce a prediction quickly while requiring substantially more work to explain it. When many alerts must be inspected, prediction time and explanation time need to be measured separately. Drawing on the 43 literature records assembled for this project, this report reformulates a proposal to investigate that distinction through a multilevel architecture.
+
+The proposed approach combines feature selection, knowledge distillation into a lighter classifier, and adaptive allocation of an explanation budget. Related work already includes explanation-driven feature reduction, hybrid pipelines, and selective decision mechanisms. The intended contribution is therefore the integration and evaluation of these components under a common protocol, with explicit constraints on predictive performance and explanation quality.
+
+The experimental design considers public Android and Windows executable datasets as separate tasks. It will measure latency, memory use, and throughput alongside macro F1, malware recall, explanation faithfulness, and stability. Comparisons will include full TreeSHAP, directly trained student models, and component ablations. This report presents the rationale and experimental design; it does not claim empirical improvements from an implementation that remains to be developed and validated.
+
+\noindent\textbf{Keywords:} malware, explainable artificial intelligence, computational cost, knowledge distillation, adaptive explanation.

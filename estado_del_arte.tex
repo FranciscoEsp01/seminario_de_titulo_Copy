@@ -1,0 +1,55 @@
+\chapter{Estado del arte}
+\section{Corpus y criterio de síntesis}
+El material de partida contiene 43 fichas de artículos: 31 antecedentes de la primera recopilación y 12 incorporaciones MDPI cuya revisión en texto completo está documentada en el vault. El anexo identifica todas las fichas y su función en el argumento. Este número describe el inventario disponible; no equivale a 43 estudios experimentales homogéneos ni a 43 fuentes verificadas con el mismo nivel de detalle.
+
+La síntesis se organiza por problemas de investigación. Los antecedentes antiguos se utilizan como mapa temático y se señalan cuando requieren contrastar metadatos o resultados. Las conclusiones que modifican directamente el diseño se apoyan principalmente en las doce fichas con PDF local y en sus localizadores de evidencia. Se evita trasladar porcentajes aislados de las fichas antiguas, porque sus condiciones experimentales no están documentadas de manera uniforme.
+
+La recopilación no permite declarar una revisión sistemática terminada: no se dispone aquí de un registro completo de búsquedas, duplicados y exclusiones. Para cumplir el OE1 será necesario completar ese registro. Los artículos de seguimiento visual, segmentación vial y seguridad 5G se conservan como contexto metodológico, pero no se cuentan como evidencia directa de eficiencia XAI en malware.
+
+\section{De la representación del malware a la explicación}
+Las fichas de Gibert, Gaber, Vásquez Berríos y la revisión ACM identificada por el DOI 3677374 sitúan el trabajo dentro de la evolución de la detección basada en aprendizaje automático. La revisión de Manthena y colaboradores aborda específicamente explicabilidad y malware \parencite{Manthena2025}. En conjunto, este grupo permite ordenar los problemas de representación, predicción y explicación, que a menudo aparecen mezclados al comparar sistemas.
+
+DREBIN representa en el corpus la línea de modelos que permiten inspeccionar contribuciones sin recurrir necesariamente a un explicador agnóstico. Baghirov y MAL-XSEL se registran como antecedentes de aplicación de SHAP y LIME a clasificadores de malware. Su papel en esta propuesta es orientar comparaciones y preguntas; no se importan sus cifras como resultados reproducidos. La ficha atribuida a Thompson carece de identificador y datos editoriales suficientes, por lo que se conserva en el inventario sin utilizarla como respaldo de afirmaciones empíricas.
+
+Los dos artículos de Ullah incorporados en la ampliación ofrecen un contraste concreto. El primero usa Word2vec y representaciones visuales de tráfico Android; el segundo emplea BERT, junto con características visuales. Ambos evalúan clasificadores por votación y aplican SHAP y LIME \parencite{Ullah2022Word2vec,Ullah2022BERT}. No corresponden a un stacking de ejecutables PE de Windows. Sus visualizaciones ilustran la aplicación de XAI, pero no constituyen un benchmark separado de latencia de explicación ni una evaluación con analistas.
+
+\section{Modelos visuales, multimodales y eficiencia}
+Una parte amplia del corpus explora imágenes y combinaciones de representaciones. Aquí se ubican las fichas de EfficientNet, IMCMKCNN, IMCNN, MIRACLE, SACNN, Ravi y Alazab, CNN preentrenadas, DIDroid y Multi-Stream CNN. Los trabajos registrados como MIDALF, ensamble multimodal, análisis de comunidades y Cross-Modal CNN amplían esa línea hacia distintas formas de fusión. Estos antecedentes muestran la diversidad de alternativas reunidas, pero sus arquitecturas no deben interpretarse como pruebas automáticas de un mayor costo de XAI.
+
+Alotaibi combina ConvNeXt-Tiny y atención cruzada para clasificar familias. Su artículo deja SHAP como trabajo futuro, por lo que no respalda una cifra de costo de explicación ni una comparación de SHAP con atención \parencite{Alotaibi2025Multimodal}. CyberSentinel sí informa parámetros, memoria y tiempo de inferencia en su configuración, pero esos valores describen el modelo visual, no el costo por explicación de SHAP o LIME \parencite{Basak2024CyberSentinel}.
+
+Las fichas de CNN-DMA y transferencia para IoT introducen restricciones de recursos como contexto. La de mitigación de riesgos con aprendizaje profundo plantea otra comparación de representaciones y modelos. Para el seminario, la consecuencia metodológica es medir las fases por separado y comprobar sus costos en un entorno común. No se deriva de este grupo que toda red profunda sea inadecuada ni que toda representación tabular resulte más eficiente.
+
+\section{Reducción y clasificación explicable: antecedentes cercanos}
+Kim y colaboradores seleccionan siete de trece atributos por nodo en grafos de llamadas de Android, usando información de métodos explicativos. El estudio reporta extracción e inferencia sobre grafos disponibles, y reconoce límites de generalización \parencite{Kim2026FCG}. Su aporte es cercano al primer nivel propuesto: la reducción orientada por explicabilidad ya tiene antecedentes. Los tiempos publicados no equivalen a medir el proceso completo desde el APK ni a aislar el costo de generar atribuciones.
+
+Ardito y colaboradores constituyen otro antecedente directo. Integran características estáticas y dinámicas, reducción de variables, clasificación y auditoría con SHAP y LIME. Además, explicitan controles sobre la construcción del benchmark y la separación de datos \parencite{Ardito2026Hybrid}. Su trabajo obliga a abandonar la afirmación de que faltan sistemas integrados. La diferencia que interesa estudiar aquí es el costo incremental de explicar y la contribución de la destilación y de una política adaptativa bajo un mismo protocolo.
+
+RFS-MD combina selección, ponderación basada en reglas y explicaciones RXAI en Android. También evalúa fidelidad mediante cambios en la probabilidad del modelo tras retirar atributos relevantes \parencite{Alhawari2026RFSMD}. Ese resultado respalda incluir alternativas explicables por diseño y detallar las perturbaciones. No aporta un factor de aceleración de RXAI frente a SHAP o LIME que pueda trasladarse al seminario.
+
+Cannarile y colaboradores comparan modelos de árboles y aprendizaje profundo sobre llamadas API tabulares, e informan tiempos de entrenamiento y predicción \parencite{Cannarile2022API}. Este antecedente justifica una línea base tabular competitiva. En el corpus antiguo, FCMSA con LightGBM y MC-KDFF orientan respectivamente la selección y la destilación; sus resultados particulares requieren verificación antes de una comparación cuantitativa. Destilar deberá aportar una ventaja frente a entrenar directamente el mismo estudiante.
+
+\section{Adaptación, confianza y robustez}
+La revisión de Liu contempla explicaciones ajustadas al contexto como línea de desarrollo; por tanto, la adaptación no se presenta como una idea sin precedentes \parencite{Liu2025GlassBox}. C-GUARD aporta un ejemplo distinto, pero pertinente, de asignación selectiva de cómputo: activa un detector adicional sobre ciertas predicciones benignas y utiliza SHAP para diagnóstico fuera de línea \parencite{Imran2026CGUARD}. No valida una política de explicación adaptativa; sí muestra por qué la confianza del clasificador no debe tomarse como garantía de acierto.
+
+La ficha de AFA-MalGAN introduce el problema de evasión como antecedente pendiente de contraste. Su presencia, junto con C-GUARD y RFS-MD, aconseja examinar errores y límites del espacio de perturbaciones. La propuesta no promete robustez adversarial por incorporar XAI: explicar un modelo y protegerlo frente a ataques son problemas diferentes.
+
+\section{Síntesis comparativa y aporte delimitado}
+\begin{table}[htbp]
+\centering\small
+\begin{tabularx}{\textwidth}{p{2.7cm}XX}
+\toprule
+Antecedente & Aporte documentado & Qué queda por medir en esta propuesta \\
+\midrule
+Kim et al. & Selección guiada por XAI; extracción e inferencia. & Costo del explicador y efecto de seleccionar atributos. \\
+Ardito et al. & Reducción, fusión y auditoría SHAP/LIME. & Aporte incremental de destilación y adaptación. \\
+Cannarile et al. & Comparación tabular y tiempos predictivos. & Explicación completa frente a presupuestos limitados. \\
+RFS-MD & Reglas, scoring y fidelidad por perturbación. & Relación entre recursos y calidad en un protocolo común. \\
+C-GUARD & Detección selectiva y análisis de evasión. & Auditoría de explicaciones en casos de alta confianza. \\
+CyberSentinel y Alotaibi & Modelos visuales y fusión; recursos en el primero. & Separación entre costo de clasificar y explicar. \\
+\bottomrule
+\end{tabularx}
+\caption{Antecedentes que precisan el aporte del seminario. Las diferencias indicadas delimitan el experimento propuesto; no afirman ausencia universal de trabajo previo.}
+\end{table}
+
+La oportunidad identificada consiste en evaluar una arquitectura concreta que articule los tres niveles y permita atribuir sus beneficios y pérdidas. La contribución esperada es un protocolo reproducible y un prototipo que expongan cuándo conviene reducir, destilar o limitar el presupuesto explicativo. No se busca demostrar que una combinación será superior en todos los casos. También interesa identificar situaciones en que TreeSHAP completo o un modelo interpretable sencillo resulten suficientes.

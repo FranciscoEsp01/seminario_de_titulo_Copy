@@ -1,0 +1,9 @@
+\chapter*{Resumen}
+\addcontentsline{toc}{chapter}{Resumen}
+Un clasificador puede detectar una muestra de malware en poco tiempo y, aun así, necesitar un esfuerzo considerable para explicar su decisión. Esta diferencia importa cuando se pretende revisar muchas alertas: el costo de explicar puede ser distinto del costo de predecir y debe medirse por separado. A partir del corpus de 43 fichas bibliográficas reunido para el seminario, este informe reformula una propuesta orientada a estudiar esa diferencia y a reducirla mediante una arquitectura multinivel.
+
+La propuesta combina selección de características, destilación de conocimiento hacia un clasificador más ligero y asignación adaptativa del presupuesto de explicación. La literatura incorporada muestra que ya existen antecedentes de reducción guiada por explicabilidad, sistemas híbridos y decisiones selectivas. Por ello, el aporte se sitúa en la integración y evaluación de estos componentes bajo un protocolo común, con controles de calidad explicativa y de rendimiento predictivo.
+
+Se plantea una evaluación sobre datos públicos de Android y ejecutables de Windows, tratados como tareas independientes. Se medirán latencia, memoria y capacidad de procesamiento, junto con macro F1, sensibilidad a malware, fidelidad y estabilidad de las explicaciones. El diseño contempla comparaciones con TreeSHAP completo, modelos entrenados directamente y ablaciones de cada componente. Este documento presenta la fundamentación y el diseño experimental; no informa resultados de un prototipo que todavía debe construirse y validarse.
+
+\noindent\textbf{Palabras clave:} malware, inteligencia artificial explicable, costo computacional, destilación de conocimiento, explicación adaptativa.

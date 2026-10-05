@@ -1,0 +1,117 @@
+\chapter{Metodología}
+\section{Diseño general}
+La investigación será cuantitativa y experimental. Se compararán configuraciones sobre las mismas particiones, muestras de explicación y condiciones de ejecución. La variable principal será el costo incremental de explicar una predicción; el rendimiento del clasificador y la calidad explicativa actuarán como restricciones. Los procedimientos descritos en este capítulo son el diseño propuesto, no experimentos ya ejecutados.
+
+\section{Revisión y trazabilidad bibliográfica}
+Para completar el OE1 se documentarán fuentes de búsqueda, fechas, ecuaciones, duplicados y motivos de exclusión. Se propone combinar términos de malware, explicabilidad y eficiencia, y efectuar una búsqueda complementaria de selección y destilación para evitar excluir antecedentes que no usen la palabra XAI. Se diferenciarán estudios primarios, revisiones y trabajos de otros dominios.
+
+Cada estudio seleccionado tendrá una ficha con identificador, tarea, datos, representación, modelo, explicador, hardware, métricas y limitaciones. Las cifras se acompañarán de tabla o página. Los conteos de un eventual diagrama PRISMA se obtendrán del registro propio; no se reconstruirán a partir de los 43 documentos reunidos ni de diagramas de otras revisiones.
+
+\section{Datos y prevención de fuga}
+CICMalDroid y ClaMP se evaluarán como conjuntos independientes. Antes de utilizarlos se registrarán versión, origen, licencia, huella de archivos, número efectivo de registros, clases y atributos. Se verificará si los datos disponibles corresponden a archivos originales o a características preextraídas. Cuando no se mida la extracción, esta exclusión se hará visible en el reporte de tiempos.
+
+La preparación identificará duplicados, etiquetas inconsistentes y variables que revelen directamente la respuesta. Las muestras vinculadas por un mismo archivo o grupo de duplicación se mantendrán en una sola partición. Si existen fechas fiables, se preferirá una evaluación temporal adicional. Sin ellas, la partición agrupada y estratificada permitirá una comparación controlada, pero no acreditará generalización temporal.
+
+Se propone reservar 70\% para entrenamiento, 15\% para validación y 15\% para prueba, sujeto a la cantidad efectiva de grupos y clases. La imputación, codificación, selección de atributos y cualquier remuestreo se ajustarán exclusivamente con entrenamiento. El ajuste de hiperparámetros usará particiones internas de ese conjunto. La validación se subdividirá o se empleará validación cruzada para separar calibración de probabilidades y selección de la política adaptativa. La prueba permanecerá cerrada hasta fijar el diseño.
+
+\section{Arquitectura multinivel}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[node distance=0.55cm,box/.style={draw,rounded corners,align=center,text width=11.7cm,minimum height=1cm,fill=blue!4},arr/.style={-Latex,thick}]
+\node[box] (a) {Características de una muestra\\Representación y versión registradas};
+\node[box,below=of a] (b) {Nivel 1: selección aprendida con entrenamiento\\Subconjunto fijo de atributos};
+\node[box,below=of b] (c) {Nivel 2: clasificador estudiante\\Comparación con profesor y entrenamiento directo};
+\node[box,below=of c] (d) {Nivel 3: presupuesto adaptativo de explicación\\Ruta económica, referencia completa y auditoría};
+\node[box,below=of d] (e) {Predicción, explicación y registro de costos\\Modelo explicado, ruta, configuración y tiempos};
+\draw[arr] (a)--(b);\draw[arr] (b)--(c);\draw[arr] (c)--(d);\draw[arr] (d)--(e);
+\end{tikzpicture}
+\caption{Flujo propuesto para la evaluación. La selección y el entrenamiento se aprenden fuera de este recorrido y sus costos se informan aparte.}
+\label{fig:arquitectura}
+\end{figure}
+
+\subsection{Nivel 1: selección de características}
+Se partirá de un filtro sencillo basado en importancia o información mutua y se evaluarán varios tamaños de subconjunto. La selección se recalculará dentro de cada partición de entrenamiento. Se comparará el mismo tipo de modelo con y sin reducción, manteniendo un presupuesto de ajuste equivalente.
+
+Los atributos conservarán su nombre y descripción para relacionar las explicaciones con la representación original. La selección no se justificará solo por la disminución de dimensiones: deberá evaluarse su efecto en macro F1, sensibilidad y costo de explicación. Las metaheurísticas se considerarán una extensión si el filtro inicial deja una pregunta experimental concreta; su propio costo formará parte del balance.
+
+\subsection{Nivel 2: profesor y estudiante}
+El profesor será un clasificador de mayor capacidad, con un ensamble como candidato. Si se usa stacking, sus predicciones de entrenamiento para el metamodelo se generarán fuera de fold. LightGBM de capacidad limitada será el candidato inicial a estudiante por su compatibilidad con explicadores de árboles; su elección definitiva dependerá de la auditoría de los datos.
+
+La destilación comparará una función supervisada con una combinación de etiquetas y probabilidades del profesor. Para una muestra se propone:
+\begin{equation}
+\mathcal{L}=\alpha\,\mathrm{CE}(y,p_s)+(1-\alpha)\,\mathrm{CE}(p_t,p_s),
+\end{equation}
+donde $p_t$ y $p_s$ son distribuciones del profesor y del estudiante, y $\alpha$ se selecciona sin consultar prueba. La implementación deberá comprobar que admite objetivos probabilísticos; no se asumirá que todas las interfaces aceptan etiquetas suaves. Si se incorpora temperatura, su valor y transformación se documentarán como una variante adicional.
+
+El estudiante destilado se contrastará con el mismo estudiante entrenado solo con etiquetas reales y con el profesor. Se registrarán el costo de formar el profesor, generar sus salidas y entrenar al estudiante. Si la destilación no mejora el equilibrio entre rendimiento y recursos, se informará sin atribuirle un beneficio por anticipado.
+
+\subsection{Nivel 3: explicación adaptativa}
+La primera implementación comparará LIME con dos presupuestos de perturbaciones y TreeSHAP completo como referencia independiente. La ruta económica usará un presupuesto menor de consultas; la ruta ampliada usará el presupuesto de referencia fijado en validación. Así, el costo se modifica antes de generar la explicación. Si TreeSHAP completo resulta más rápido y mantiene mejor calidad, ese resultado limitará la utilidad de adaptar LIME.
+
+La política empleará probabilidades calibradas y un criterio de auditoría aleatoria sobre casos de alta confianza. Los umbrales, presupuestos y proporción de auditoría se seleccionarán en validación y quedarán congelados antes de la prueba. No se adoptarán 0,95 y 0,80 como garantías de seguridad. Se registrarán cobertura por ruta, clase, errores y calidad de explicación en cada franja.
+
+Todas las muestras de la comparación principal recibirán una explicación; una política que omita explicaciones se evaluaría como escenario distinto, con cobertura explícita. La auditoría se seleccionará antes de conocer la etiqueta de prueba y su costo se incluirá en el promedio operacional. El sistema devolverá la predicción, el modelo explicado, el explicador, el presupuesto empleado y las variables relevantes. Las importancias globales no reemplazarán una explicación local sin señalarlo.
+
+\subsection{Extensión de caché}
+La caché inicial almacenará explicaciones de entradas idénticas e incluirá en su clave la versión del preprocesamiento, del modelo y del explicador. Una actualización invalidará los resultados afectados. Se medirán búsqueda, memoria, aciertos y recálculos con cargas frías y calientes, informando la proporción de repeticiones.
+
+Reutilizar explicaciones de muestras parecidas exige una validación adicional: cercanía en el espacio de atributos no garantiza igualdad de contribuciones. Por ello, la caché por similitud queda fuera del experimento principal. No se usará para sostener un ahorro si no se comprueba el error que introduce.
+
+\section{Líneas base y ablaciones}
+\begin{table}[htbp]
+\centering\small
+\begin{tabularx}{\textwidth}{p{1cm}XX}
+\toprule
+ID & Configuración & Pregunta que permite responder \\
+\midrule
+B0 & Modelo lineal o árbol sencillo, con contribuciones o reglas. & ¿Es suficiente una alternativa interpretable de menor complejidad? \\
+B1 & Estudiante directo y TreeSHAP completo. & ¿Supera la propuesta una línea base eficiente? \\
+B2 & Estudiante directo y LIME de presupuesto fijo. & ¿Qué aporta adaptar el presupuesto del mismo explicador? \\
+B3 & Modelo compatible con KernelSHAP, presupuesto fijo. & ¿Cómo se comporta una explicación agnóstica en una muestra común? \\
+P & Selección, estudiante destilado y política adaptativa. & ¿Qué cambia al integrar los tres niveles? \\
+\bottomrule
+\end{tabularx}
+\caption{Configuraciones a implementar. B3 se limitará a un subconjunto común si su costo impide evaluar todo el conjunto.}
+\end{table}
+
+Se evaluarán selección sola, destilación sola, adaptación sola y sus combinaciones, idealmente mediante un diseño factorial de presencia o ausencia de los tres componentes. Cada ablación mantendrá los demás factores constantes. La caché se agregará después, como experimento separado. MAL-XSEL y Ardito se utilizarán como antecedentes arquitectónicos; una implementación inspirada en ellos se identificará como adaptación y no como reproducción exacta.
+
+\section{Medición del costo computacional}
+Para cada muestra se distinguirán extracción o preparación, inferencia, enrutamiento, explicación y presentación:
+\begin{equation}
+t_{\mathrm{total}}=t_{\mathrm{prep}}+t_{\mathrm{inf}}+t_{\mathrm{ruta}}+t_{\mathrm{exp}}+t_{\mathrm{salida}}.
+\end{equation}
+El costo incremental de XAI incluirá enrutamiento, explicación y la parte de presentación atribuible a XAI. La clasificación ya calculada se reutilizará cuando corresponda, evitando contar dos veces la misma inferencia. Si una fase no se mide, se indicará de forma explícita.
+
+Se reportarán media, mediana y percentil 95 de latencia; memoria pico del proceso y diferencia respecto al estado previo al explicador; y tasa de procesamiento medida en pruebas por lote. El throughput se calculará como número de muestras finalizadas dividido por el tiempo total de la carga, no como el inverso de una latencia cuando exista paralelismo.
+
+El factor de aceleración será $S=\overline{t}_{\mathrm{base}}/\overline{t}_{\mathrm{propuesta}}$ sobre las mismas muestras. También se informará la diferencia absoluta y qué fases abarca. El costo de las auditorías efectivamente activadas pertenecerá al tiempo operacional; las explicaciones adicionales generadas solo para evaluar calidad se contabilizarán como costo de evaluación fuera de línea.
+
+Para el trabajo previo al despliegue se registrarán preparación, selección, entrenamiento, destilación y calibración. Si una variante ahorra tiempo por muestra, se podrá estimar el número de muestras necesario para amortizar su costo inicial adicional. Esta estimación solo se hará cuando el ahorro por muestra sea positivo y bajo una carga explícita.
+
+\section{Rendimiento y calidad de explicación}
+El rendimiento se medirá con macro F1, exactitud, sensibilidad a malware, falsos positivos y resultados por clase. En tareas binarias se añadirá AUC ROC y, cuando el desbalance lo haga pertinente, el área bajo precisión--recall. En multiclase se declarará el esquema de agregación y la correspondencia entre categorías y malware.
+
+La fidelidad se estudiará perturbando los atributos destacados y observando la salida del mismo modelo explicado. Para un conjunto de $k$ atributos positivos relevantes se calculará:
+\begin{equation}
+D_k(x)=f_c(x)-f_c\bigl(x^{(-S_k)}\bigr),
+\end{equation}
+donde $c$ es la clase explicada, fijada en la muestra original, y $x^{(-S_k)}$ reemplaza esos atributos con una referencia derivada de entrenamiento. Se comparará con conjuntos aleatorios de igual tamaño. Se informarán signo, tamaño del conjunto, reglas de reemplazo y restricciones de validez. Esta medida describe sensibilidad del modelo bajo la perturbación elegida, no causalidad del malware.
+
+Se evaluará además el error del sustituto local de LIME en un vecindario reservado distinto al usado para ajustarlo. Las coincidencias con TreeSHAP se tratarán como concordancia entre métodos, no como prueba de verdad. Para evitar cambios de escala inadvertidos se especificará si cada método explica probabilidades o márgenes; las comparaciones numéricas exigirán una salida y una semántica compatibles.
+
+La estabilidad se medirá repitiendo explicaciones estocásticas con distintas semillas sobre una misma muestra y comparando el solapamiento de los primeros $k$ atributos. Una segunda prueba usará perturbaciones pequeñas y válidas con predicción estable, cuando sea posible construirlas. Se reportarán ambas pruebas por separado, pues evalúan fuentes diferentes de variación.
+
+\section{Criterios de aceptación y análisis}
+Antes de abrir la prueba se fijarán márgenes máximos de pérdida predictiva y explicativa. Como punto de partida del piloto se propone un margen de un punto porcentual para macro F1 y sensibilidad a malware, y una tolerancia relativa de 5\% para las métricas de calidad cuya escala lo permita. Son decisiones iniciales de diseño, no umbrales validados por la literatura; se ratificarán o modificarán con el piloto y quedarán registradas antes de la evaluación final.
+
+La configuración se seleccionará en validación buscando menor costo entre las alternativas que cumplan todas las restricciones. En prueba se informarán diferencias pareadas e intervalos de confianza del 95\%, remuestreando por grupos de muestras cuando exista dependencia. Para métricas donde un valor mayor es mejor, el límite inferior de la diferencia propuesta menos base deberá superar el margen negativo fijado. Para el ahorro de tiempo se informará si el intervalo respalda una reducción positiva. Si la incertidumbre no permite concluir, el resultado se declarará inconcluso.
+
+Se distinguirán cinco semillas de entrenamiento como propuesta inicial y diez repeticiones de temporización sobre modelos ya fijados. Las repeticiones temporales no se tratarán como diez modelos independientes. Se registrarán calentamiento, procesos concurrentes, CPU/GPU, memoria, hilos, versiones, tamaños de lote y semillas. El orden de temporización se alternará para reducir el efecto de cambios en la carga del equipo.
+
+\section{Amenazas a la validez}
+El desbalance, la duplicación y las variables que revelan la etiqueta pueden inflar resultados. La partición y la selección dentro de entrenamiento buscan controlar esas amenazas. La ausencia de fechas o de un dataset externo limitará lo que pueda afirmarse sobre evolución temporal y generalización.
+
+Las perturbaciones pueden salir de la distribución de datos, y distintas definiciones de referencia pueden alterar las atribuciones. Por eso se documentará el protocolo y se evaluará sensibilidad a sus parámetros. El hardware y la implementación también condicionan el costo: los resultados describirán el entorno utilizado, no una latencia universal.
+
+Finalmente, se examinarán muestras mal clasificadas y errores de alta confianza. Un buen promedio puede ocultar precisamente los casos en que más interesa una explicación detallada. Sin un estudio con personas, las conclusiones se limitarán a rendimiento, recursos y calidad técnica.

@@ -1,0 +1,15 @@
+\chapter{Objetivos}
+\section{Objetivo general}
+Diseñar, construir y validar un \textit{framework} multinivel para reducir el costo computacional de la Inteligencia Artificial Explicable (XAI) en la clasificación de malware, con el fin de viabilizar el uso de modelos transparentes en operaciones de ciberseguridad que exigen respuestas rápidas.
+
+\section{Objetivos específicos}
+Se mantienen las dimensiones y el alcance de los objetivos registrados en el vault.
+\begin{description}[style=nextline,leftmargin=1.2cm]
+\item[OE1. Estudio] Realizar una revisión sistemática de la literatura sobre el uso de la Inteligencia Artificial Explicable (XAI) en la detección de malware, para identificar los cuellos de botella computacionales y problemas de escalabilidad actuales.
+\item[OE2. Estudio] Definir un marco de referencia que establezca cómo se medirá el costo computacional de XAI (latencia, consumo de memoria, volumen de procesamiento) y la utilidad de las explicaciones (fidelidad y estabilidad) en escenarios de monitoreo continuo.
+\item[OE3. Desarrollo] Diseñar la arquitectura del \textit{framework}, definiendo cómo interactúan sus tres componentes principales: la reducción de dimensionalidad, la destilación de conocimiento hacia modelos más ligeros y la estrategia de explicación adaptativa.
+\item[OE4. Desarrollo] Construir un prototipo funcional que integre estos tres niveles, asegurando que sea compatible con clasificadores de malware y con librerías estándar de explicabilidad, como SHAP y LIME.
+\item[OE5. Validación] Evaluar el sistema mediante experimentos sobre conjuntos de datos públicos, como CICMalDroid o ClaMP, para comprobar cuánta carga computacional se logra reducir en comparación con los enfoques de XAI tradicionales, sin sacrificar la precisión de la detección.
+\end{description}
+
+En la evaluación, la conservación del rendimiento se operacionalizará mediante márgenes de no inferioridad fijados antes de consultar la prueba final. La fidelidad y la estabilidad del OE2 se medirán como propiedades técnicas; demostrar utilidad humana requeriría un estudio adicional. El inventario de 43 fichas constituye un insumo del OE1, cuyo protocolo sistemático aún debe completarse.

@@ -1,0 +1,35 @@
+\chapter{Marco teórico}
+\section{Representación y clasificación de malware}
+El análisis estático obtiene información sin ejecutar el programa; el dinámico observa su comportamiento en un entorno de ejecución; y el híbrido combina ambas fuentes. Estas alternativas producen entradas distintas y tienen costos diferentes. Si una evaluación comienza con una tabla ya extraída, sus tiempos describen lo que ocurre desde esa tabla, no desde la recepción del archivo original.
+
+La detección binaria distingue entre muestras benignas y maliciosas. La clasificación multiclase identifica categorías o familias según las etiquetas disponibles. Una elevada sensibilidad en la tarea binaria no implica un rendimiento equivalente al discriminar familias. La exactitud global tampoco describe por sí sola el comportamiento en clases minoritarias. Por eso se incluirán macro F1, resultados por clase y falsos positivos.
+
+Las representaciones visuales, las secuencias y los grafos amplían las opciones de modelado. Sin embargo, una región de una imagen o una variable latente no siempre corresponde de forma directa a una característica comprensible del ejecutable. Esta distancia entre representación y significado condiciona la interpretación de las atribuciones \parencite{Ullah2022BERT,Kim2026FCG}.
+
+\section{Qué significa explicar una predicción}
+Una explicación local describe una decisión particular; una explicación global resume aspectos del comportamiento del modelo en un conjunto de casos. Ambas son útiles para preguntas diferentes. La importancia global de una variable no demuestra que esa variable haya determinado una alerta concreta. De manera similar, ordenar pesos de atención permite inspeccionar un modelo, pero no garantiza una explicación fiel ni causal \parencite{Liu2025GlassBox,Tayari2026Clarity}.
+
+Los modelos interpretables por diseño ofrecen estructuras que pueden examinarse directamente, como coeficientes o reglas. Los métodos post hoc construyen una explicación de un modelo ya entrenado. Ninguna de estas alternativas está libre de costos: extraer, ordenar y presentar información también consume recursos. En este proyecto se medirá ese trabajo cuando forme parte de la salida entregada.
+
+\section{SHAP y sus implementaciones}
+SHAP atribuye contribuciones a las características con respecto a una referencia y a una salida del modelo. La enumeración exacta de todas las coaliciones crece exponencialmente con el número de características. Esto no significa que toda ejecución de KernelSHAP enumere esas coaliciones: su implementación permite estimar atribuciones con un presupuesto de muestras. El costo efectivo dependerá de ese presupuesto, del conjunto de referencia y de las consultas al clasificador.\footnote{Documentación técnica consultada: \url{https://shap.readthedocs.io/en/stable/generated/shap.KernelExplainer.html}.}
+
+TreeSHAP aprovecha la estructura de modelos de árboles compatibles. Su uso hace pertinente comparar la propuesta con explicaciones completas de un modelo tabular competitivo. No se supondrá que puede explicar de forma exacta un ensamble arbitrario solo porque alguno de sus componentes sea un árbol. Se registrará el objeto explicado, la salida utilizada y el tratamiento de dependencias entre variables.
+
+Una atribución sobre el estudiante describe al estudiante. La semejanza de sus predicciones con las del profesor no convierte esa atribución en una explicación del profesor. Si se examina concordancia entre modelos, se informará como una propiedad adicional, separada de la fidelidad de la explicación a cada uno.
+
+\section{LIME y evaluación local}
+LIME aproxima el comportamiento del clasificador alrededor de una muestra mediante un modelo sencillo ajustado a perturbaciones. La elección del vecindario, su ponderación y el número de consultas influyen tanto en el costo como en el resultado. No se asumirá que LIME es siempre más rápido que SHAP, pues la comparación depende de las implementaciones y sus configuraciones \parencite{Liu2025GlassBox}.
+
+En malware, modificar una variable tabular puede producir una combinación imposible en un ejecutable real. Por ello, el protocolo distinguirá las pruebas sobre representaciones de cualquier afirmación sobre programas funcionales. Las perturbaciones respetarán el tipo y rango de las variables, y se documentarán las dependencias que no sea posible preservar.
+
+\section{Selección, destilación y adaptación}
+La selección de características reduce el espacio de entrada, pero exige volver a entrenar y evaluar el modelo. Su efecto sobre el tiempo de explicación es una cuestión empírica. También se debe contar el costo de aprender la selección, aunque se realice fuera del camino de inferencia.
+
+La destilación utiliza las salidas de un profesor para entrenar un estudiante. En el diseño propuesto se contrastará una pérdida basada en etiquetas reales con otra que incorpora probabilidades del profesor. La capacidad del estudiante, los datos y el presupuesto de ajuste se mantendrán comparables entre ambos casos. Un ensamble puede servir de profesor, pero su composición no lo hace intrínsecamente transparente.
+
+La explicación adaptativa asigna recursos distintos según el caso. Para que tenga sentido como optimización, debe alterar el cálculo realizado, no solo acortar la lista de atributos que se muestra después de calcular una explicación completa. Además, requiere evaluar si el ahorro se obtiene a costa de explicaciones menos fieles o de excluir sistemáticamente determinados tipos de muestras.
+
+\section{Calidad técnica y utilidad humana}
+La fidelidad evalúa hasta qué punto una explicación refleja el comportamiento del modelo bajo un protocolo concreto. La estabilidad examina la consistencia ante repeticiones o cambios controlados. Ninguna de estas medidas demuestra por sí sola que un analista comprenda mejor una alerta. Las revisiones de Cecchi y de Tayari y Zaied resaltan la necesidad de distinguir estos planos \parencite{Cecchi2026Connecting,Tayari2026Clarity}.
+

@@ -1,0 +1,21 @@
+\chapter{Definición del problema}
+\section{Problema de investigación}
+El problema abordado es el costo adicional de generar explicaciones locales en la clasificación de malware. Ese costo puede adquirir relevancia cuando aumenta el número de muestras, se emplean representaciones extensas o el explicador necesita consultar repetidamente un modelo complejo. Su magnitud no debe darse por sentada: depende del algoritmo, del presupuesto de muestreo, del hardware y de la calidad exigida a la explicación.
+
+La dificultad no se resuelve únicamente con un clasificador más pequeño. La reducción de características puede eliminar información relevante; un estudiante puede reproducir errores de su profesor; y un motor adaptativo puede reservar las explicaciones más completas para casos que no concentran todos los errores. C-GUARD muestra precisamente que pueden persistir predicciones benignas incorrectas con alta confianza. Su mecanismo adapta la detección, no la explicación, pero ofrece una advertencia pertinente para el diseño de una política selectiva \parencite{Imran2026CGUARD}.
+
+Tampoco basta con comparar una versión optimizada frente a una alternativa innecesariamente costosa. Si se utiliza un clasificador de árboles, TreeSHAP completo constituye una referencia exigente. El beneficio de destilar debe contrastarse con un estudiante de igual capacidad entrenado sin destilación. Estas comparaciones permiten distinguir el aporte de cada componente del efecto de cambiar simplemente de modelo o explicador.
+
+\section{Pregunta e hipótesis de trabajo}
+La pregunta general es: \textit{¿En qué medida una arquitectura que combina selección de características, destilación de conocimiento y explicación adaptativa reduce el costo incremental de XAI en clasificación de malware, manteniendo el rendimiento predictivo y la calidad explicativa dentro de tolerancias definidas antes de la prueba final?}
+
+La hipótesis de trabajo plantea que esta combinación puede reducir la latencia de explicación y el consumo de recursos frente a líneas base competitivas. La hipótesis no supone un porcentaje de ahorro ni garantiza que todos los componentes aporten. Una configuración será útil si ofrece una mejora verificable y cumple las restricciones previamente fijadas; si un componente agrega costo sin mejorar ese equilibrio, el resultado también será relevante.
+
+Se examinarán tres preguntas específicas: cuánto aporta la selección de atributos al costo de explicación; si destilar ofrece una ventaja frente al entrenamiento directo; y cómo cambia la relación entre costo y calidad cuando se modifica el presupuesto explicativo por muestra. La evaluación del tercer punto incluirá errores de alta confianza y el costo de las auditorías, no solo el promedio global.
+
+\section{Alcance y delimitaciones}
+La unidad experimental será una muestra representada mediante características tabulares y acompañada de su etiqueta. CICMalDroid y ClaMP se consideran candidatos principales por su presencia en el planteamiento original. Su versión, disponibilidad, etiquetas y archivos concretos deberán verificarse antes de fijar la evaluación. Android y Windows se tratarán por separado; no se mezclan sus variables ni se supone transferencia directa entre plataformas.
+
+El núcleo del trabajo abarca selección de atributos, comparación profesor--estudiante y explicación adaptativa. La caché se estudiará como extensión controlada, empezando por entradas idénticas. Metaheurísticas, aprendizaje incremental y ejecución distribuida no son requisitos del prototipo inicial. Esta delimitación permite atribuir los resultados a decisiones identificables y completar una evaluación manejable.
+
+El prototipo no ejecutará acciones de contención ni se validará como un sistema de respuesta en producción. Tampoco se afirmará que una explicación identifica causas del comportamiento malicioso o que un modelo detecta amenazas de día cero sin un protocolo específico que lo demuestre.
